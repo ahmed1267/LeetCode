@@ -6,8 +6,11 @@
 var twoSum = function (nums, target) {
 
     for (let i = 0; i < nums.length; i++) {
-
-        if(nums.includes(target-nums[i])&& nums.indexOf(target-nums[i])!=i) return [i,nums.indexOf(target-nums[i])]
+        let index=nums.indexOf(target-nums[i])
+        if(nums.includes(target-nums[i])&& index!=i) return [i,index]
     }
+    // nums=nums.sort((a,b)=> a-b)
+    // for(let i=0;i<nums.length;i++){
 
+    // }
 };
