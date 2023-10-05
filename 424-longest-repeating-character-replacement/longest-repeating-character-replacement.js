@@ -4,25 +4,28 @@
  * @return {number}
  */
 function characterReplacement(s, k) {
-    let mostFreq=0
-    let freq={}
-    let max=0
+    let mostFreq = 0
+    let max = 0
+    const freqHash = {}
 
-    for(let l=0, r=0;r<s.length;r++){
-        let cur=s[r]
-        if(!(cur in  freq)) freq[cur]=0
-        freq[cur]+=1
-        mostFreq=Math.max(mostFreq,freq[cur])
-        let rep=r-l-mostFreq+1
-        while(rep>k){
-            const left=s[l]
-            freq[left]-=1
-            l++
-            // mostFreq=Math.max(mostFreq,freq[l])
-            rep=r-l-mostFreq+1
+    for (let leftEdge = 0, rightEdge = 0; rightEdge < s.length; rightEdge++) {
+        const current = s[rightEdge]
+        if (!(current in freqHash)) {
+            freqHash[current] = 0;
         }
-        max=Math.max(max,r-l+1)
+        freqHash[current] += 1
+        mostFreq = Math.max(mostFreq, freqHash[current])
+
+        let replacmentNum = rightEdge - leftEdge - mostFreq + 1
+
+        while (replacmentNum > k) {
+            const left = s[leftEdge]
+            freqHash[left] -= 1
+            leftEdge++
+            replacmentNum = rightEdge - leftEdge - mostFreq + 1
+
+        }
+        max = Math.max(max, rightEdge - leftEdge + 1)
     }
     return max
-
 }
