@@ -11,7 +11,7 @@ var longestPalindrome = function(s) {
         if(!map[s[i]]) map[s[i]]=0
         map[s[i]]+=1
     }
-    console.log(map)
+   
     for(let char in map){
         if((map[char]%2)==0) res+=(map[char])
         else if(map[char]>2 && (map[char]%2)==1) {
