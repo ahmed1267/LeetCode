@@ -31,6 +31,7 @@ var nextGreaterElement = function (nums1, nums2) {
         let n=stack.length-1
         map.set(nums2[i],stack[n]> nums2[i] ? stack[n] : -1)
         stack.push(nums2[i])
+        
     }
 
     return nums1.map(num => map.get(num))
