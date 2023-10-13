@@ -17,16 +17,15 @@ var findMedianSortedArrays = function(nums1, nums2) {
         }
     }
 
-    while(i<nums1.length) {
+    while(i<nums1.length){
         arr.push(nums1[i])
         i++
-    }
-    while(j<nums2.length) {
+    }   
+    while(j<nums2.length){
         arr.push(nums2[j])
         j++
     }
-
-    let mid = Math.floor(arr.length/2)
-    if((arr.length%2)==0) return (arr[mid-1]+arr[mid])/2
+    let mid= Math.floor(arr.length/2)
+    if((arr.length%2)==0) return (arr[mid]+arr[mid-1])/2
     else return arr[mid]
 };
