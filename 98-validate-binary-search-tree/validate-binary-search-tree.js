@@ -14,9 +14,11 @@ var isValidBST = function(root) {
     return validate(root,-Infinity,Infinity)
 };
 
-var validate=function(node, lower, upper){
-    if(node==null) return true
-    if(lower<node.val && node.val<upper){
-        return validate(node.left,lower,node.val) && validate(node.right, node.val,upper)
+var validate= function(root,lower,upper){
+    if(root==null) return true
+    if(root.val>lower&&root.val<upper){
+        return validate(root.left,lower,root.val) && validate(root.right,root.val,upper)
     }else return false
 }
+
+
