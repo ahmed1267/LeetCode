@@ -3,18 +3,15 @@
  * @return {number}
  */
 var maxProfit = function(prices) {
-let rightEdge=1
-let leftEdge=0
-let maxProfit=0
-while(rightEdge!=prices.length){
-    if(prices[leftEdge]<prices[rightEdge]){
-        let profit=prices[rightEdge]-prices[leftEdge]
-        maxProfit=profit>maxProfit? profit:maxProfit
-
-    }else{
-        leftEdge=rightEdge
+    let l=0,r=l+1,max=0
+    while(r<prices.length){
+        if(prices[l]<prices[r]){
+            max=Math.max(max,(prices[r]-prices[l]))
+            
+        }else {
+            l=r
+        }
+        r+=1
     }
-    rightEdge++
-}
-return maxProfit
+    return max
 };
