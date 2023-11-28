@@ -21,7 +21,7 @@ var recoverTree = function(root) {
             big=prev
         }
         prev=root
-        console.log('small',small,'big',big,'prev',prev)
+
         inorder(root.right)
         return
     }
