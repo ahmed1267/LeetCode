@@ -11,13 +11,13 @@
  * @return {TreeNode[]}
  */
 var generateTrees = function(n) {
-    let memo=new Map()
+    // let memo=new Map()
 
     function generate(start,end){
         if(start>end) return [undefined];
-        if (memo.has(`${start}-${end}`)) {
-            return memo.get(`${start}-${end}`);
-        }
+        // if (memo.has(`${start}-${end}`)) {
+        //     return memo.get(`${start}-${end}`);
+        // }
         let res=[]
         for(let i=start;i<=end;i++){
             for(let leftTree of generate(start,i-1)){
@@ -27,7 +27,7 @@ var generateTrees = function(n) {
                 }
             }
         }
-         memo.set(`${start}-${end}`, res)
+        //  memo.set(`${start}-${end}`, res)
         return res
     }
 
