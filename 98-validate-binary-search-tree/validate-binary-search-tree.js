@@ -19,6 +19,4 @@ var validate= function(root,lower,upper){
     if(root.val>lower&&root.val<upper){
         return validate(root.left,lower,root.val) && validate(root.right,root.val,upper)
     }else return false
-}
-
-
+};
