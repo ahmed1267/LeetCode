@@ -15,7 +15,7 @@ var minSwapsCouples = function(row) {
         map.set(row[i],i)
     }
     for(let i=0;i<row.length;i+=2){
-        let next=(row[i]%2)==0?row[i]+1:row[i]-1
+        let next=row[i]^1
         
         if(row[i+1] && row[i+1]!=next){
             swaps++
