@@ -11,12 +11,9 @@ var maxLength = function(arr) {
     }
 
     function isValid(str){
-        let map={}
-        for(let char of str){
-            if(map[char]) return false
-            map[char]= true
-        }
-        return true
+        let set= new Set(str)
+        if(set.size==str.length) return true
+        return false
     }
     return dfs(0,'',arr)
 };
