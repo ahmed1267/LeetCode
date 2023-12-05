@@ -22,7 +22,7 @@ var levelOrderBottom = function(root) {
             if(node.right!=null) q.push(node.right)
             
         }
-        res.push(level)
+        res.unshift(level)
     }
-    return res.reverse()
+    return res
 };
