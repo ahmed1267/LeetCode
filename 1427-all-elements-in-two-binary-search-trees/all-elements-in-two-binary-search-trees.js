@@ -12,19 +12,32 @@
  * @return {number[]}
  */
 var getAllElements = function(root1, root2) {
-    let q= new MinPriorityQueue()
-    let res=[]
-    function dfs(root,q){
+    let res=[] , arr1=[], arr2=[]
+    function dfs(root,arr){
         if(!root) return
-        dfs(root.left,q)
-        q.enqueue(root.val)
-        dfs(root.right,q)
+        dfs(root.left,arr)
+        arr.push(root.val)
+        dfs(root.right,arr)
     }
-    dfs(root1,q)
-    dfs(root2,q)
-    let n=q.size()
-    for(let i =0;i<n;i++){
-      res.push(q.dequeue().element)
+    dfs(root1,arr1)
+    dfs(root2,arr2)
+    let i=0, j=0
+    while(i<arr1.length && j<arr2.length){
+      if(arr1[i]<arr2[j]){
+        res.push(arr1[i])
+        i++
+      }else{
+        res.push(arr2[j])
+        j++
+      }
+    }
+    while(i<arr1.length) {
+      res.push(arr1[i])
+      i++  
+    }
+    while(j<arr2.length){
+      res.push(arr2[j])
+      j++
     }
     return res
 };
