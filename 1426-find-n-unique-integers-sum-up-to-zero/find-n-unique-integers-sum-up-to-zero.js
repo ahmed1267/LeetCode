@@ -3,8 +3,17 @@
  * @return {number[]}
  */
 var sumZero = function(n) {
-    let res=Array.from({length:n-1}, (_,index)=> index+1)
-    let last= res.reduce((partial,a)=> partial+a,0)
-    res.push(last*=-1)
+  if(n==1) return [0]
+  let res=[]
+  let odd=false
+    if(n%2==1){ 
+      n=n-1
+      odd=true
+    }
+    else {n=n}
+    for(let i=0;i<n/2;i++){
+      res.push(i+1,-(i+1))
+    }
+    if(odd==true) res.push(0)
     return res
 };
