@@ -1,12 +1,12 @@
 var TrieNode = function(key){
-    this.parent=null
-    this.key= key|| null
-    this.children={}
-    this.end=false
+  this.parent= null
+  this.key= key || null
+  this.children={}
+  this.end=false
 }
 
 var Trie = function() {
-    this.root=new TrieNode(null)
+  this.root= new TrieNode()
 };
 
 /** 
@@ -14,17 +14,17 @@ var Trie = function() {
  * @return {void}
  */
 Trie.prototype.insert = function(word) {
-    let node= this.root
-    for(let i=0; i<word.length;i++){
-        if(!node.children[word[i]]){
-            node.children[word[i]]= new TrieNode(word[i])
-            node.children[word[i]].parent=node
-        }
-        node=node.children[word[i]]
-        if(i==word.length-1){
-            node.end=true
-        }
-    }
+let node = this.root
+for(let i=0;i<word.length;i++){
+  if(!node.children[word[i]]){
+    node.children[word[i]]= new TrieNode(word[i])
+    node.children[word[i]].parent= node
+  }
+  node=node.children[word[i]]
+  if(i== word.length-1){
+    node.end=true
+  }
+}
 };
 
 /** 
@@ -33,14 +33,14 @@ Trie.prototype.insert = function(word) {
  */
 Trie.prototype.search = function(word) {
     let node=this.root
-    for(let i=0; i<word.length;i++){
-        if(node.children[word[i]]){
-            node=node.children[word[i]]
-        }else{
-            return false
-        }
+  for(let i=0;i<word.length;i++){
+    if(node.children[word[i]]){
+      node=node.children[word[i]]
+    }else{
+      return false
     }
-    return node.end
+  }
+  return node.end
 };
 
 /** 
@@ -48,15 +48,15 @@ Trie.prototype.search = function(word) {
  * @return {boolean}
  */
 Trie.prototype.startsWith = function(prefix) {
-    let node=this.root
-    for(let i=0; i<prefix.length;i++){
-        if(node.children[prefix[i]]){
-            node=node.children[prefix[i]]
-
-        }else
-        return false
+  let node=this.root
+  for(let i=0;i<prefix.length;i++){
+    if(node.children[prefix[i]]){
+      node=node.children[prefix[i]]
+    }else{
+      return false
     }
-    return true
+  }
+  return true
 };
 
 /** 
