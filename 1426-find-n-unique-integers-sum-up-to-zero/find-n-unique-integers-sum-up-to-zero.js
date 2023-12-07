@@ -3,17 +3,12 @@
  * @return {number[]}
  */
 var sumZero = function(n) {
-  if(n==1) return [0]
   let res=[]
-  let odd=false
-    if(n%2==1){ 
-      n=n-1
-      odd=true
-    }
-    else {n=n}
-    for(let i=0;i<n/2;i++){
-      res.push(i+1,-(i+1))
-    }
-    if(odd==true) res.push(0)
-    return res
+  let sum=0
+  for(let i=0;i<n-1;i++){
+    res.push(i+1)
+    sum+=i+1
+  }
+  res.push(-sum)
+  return res
 };
