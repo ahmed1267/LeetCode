@@ -10,8 +10,7 @@ var fourSumCount = function(nums1, nums2, nums3, nums4) {
     let count=0
     nums3.forEach(c=> {
         nums4.forEach(d=> {
-            if(!map.has(c+d)) map.set(c+d,0)
-            map.set(c+d,map.get(c+d)+1)
+            map.set(c+d, (map.get(c+d) || 0) + 1);
         })
     })
     nums1.forEach(a=>{
