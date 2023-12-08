@@ -7,10 +7,9 @@ var largestOddNumber = function(num) {
   for(let i=num.length-1;i>=0;i--){
     n=parseInt(num[i])
     if((n%2)==1){
-      break;
-    }else{
-      num=num.slice(0,i)
+     return num.slice(0,i+1)
     }
   }
-  return num
+  return ""
+
 };
