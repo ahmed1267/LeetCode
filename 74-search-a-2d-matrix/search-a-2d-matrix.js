@@ -4,16 +4,17 @@
  * @return {boolean}
  */
 var searchMatrix = function (matrix, target) {
+    let n= matrix[0].length
+    let m= matrix.length
     var BS = function (matrix, target, left, right) {
         if (left > right) return false
         let mid = Math.floor((left + (right - left) / 2))
-        if (target <= matrix[mid][matrix[0].length - 1] && target >= matrix[mid][0]) return matrix[mid]
-        else if (target > matrix[mid][matrix[0].length - 1]) return BS(matrix, target, mid + 1, right)
+        if (target <= matrix[mid][n - 1] && target >= matrix[mid][0]) return matrix[mid]
+        else if (target > matrix[mid][n - 1]) return BS(matrix, target, mid + 1, right)
         else if (target < matrix[mid][0]) return BS(matrix, target, left, mid - 1)
 
     }
-    let arr = BS(matrix, target, 0, matrix.length - 1)
-    let w = matrix[0].length
+    let arr = BS(matrix, target, 0, m - 1)
 
     var BSArr = function (arr, target, left, right) {
 
@@ -25,6 +26,6 @@ var searchMatrix = function (matrix, target) {
 
     }
 
-    return BSArr(arr, target, 0, w - 1) ? BSArr(arr, target, 0, arr.length - 1) : false
+    return BSArr(arr, target, 0, n - 1) ? true : false
 
 };
