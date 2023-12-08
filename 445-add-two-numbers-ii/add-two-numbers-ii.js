@@ -24,10 +24,8 @@ var addTwoNumbers = function(l1, l2) {
     }
     let newL1= reverse(l1)
     let newL2= reverse(l2)
-    console.log(newL1,newL2)
     let prev=null
     let carry=0
-    let curr
     while(newL1 || newL2 || carry !=0){
         let sum=carry
         if(newL1){
