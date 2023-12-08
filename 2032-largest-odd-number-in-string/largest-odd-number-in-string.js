@@ -4,13 +4,13 @@
  */
 var largestOddNumber = function(num) {
   if (parseInt(num.slice(-1)) % 2 == 1) return num;
-  num=num.split('')
   for(let i=num.length-1;i>=0;i--){
-    if(!(parseInt(num[i])%2==1)){
-      num.pop()
-    }else{
+    n=parseInt(num[i])
+    if((n%2)==1){
       break;
+    }else{
+      num=num.slice(0,i)
     }
   }
-  return num.join('')
+  return num
 };
