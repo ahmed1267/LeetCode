@@ -10,7 +10,7 @@ var allPathsSourceTarget = function(graph) {
             return
         }
         for(let neighbor of graph[node]){
-            dfs(neighbor,path.concat([neighbor]))
+            dfs(neighbor,[...path,neighbor])
         }
     }
 
