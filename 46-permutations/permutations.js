@@ -4,16 +4,16 @@
  */
 var permute = function(nums) {
 
-    if(nums.length<=1) return [nums]
-    let curr=nums.pop()
-    let prev=permute(nums)
-    let ans=[]
-    for(let ele of prev){
-        for(let i=0;i<=ele.length;i++){
-            let nEle=Array.from(ele)
-            nEle.splice(i,0,curr)
-            ans.push(nEle)
+    function BT (nums,path){
+        if(nums.length==0){
+            res.push(path)
+            return
+        }
+        for(let i=0;i<nums.length;i++){
+            BT([...nums.slice(0,i),...nums.slice(i+1)],path.concat(nums[i]))
         }
     }
-    return ans
+    let res = []
+    BT(nums,[])
+    return res
 };
