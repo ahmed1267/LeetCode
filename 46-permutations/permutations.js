@@ -10,7 +10,7 @@ var permute = function(nums) {
             return
         }
         for(let i=0;i<nums.length;i++){
-            BT([...nums.slice(0,i),...nums.slice(i+1)],path.concat(nums[i]))
+            BT([...nums.slice(0,i),...nums.slice(i+1)],[...path,nums[i]])
         }
     }
     let res = []
