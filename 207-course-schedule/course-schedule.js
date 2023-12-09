@@ -3,40 +3,34 @@
  * @param {number[][]} prerequisites
  * @return {boolean}
  */
-const canFinish = function(numCourses, prerequisites) {
-    const adjList = new Array(numCourses).fill(0).map(() => []);
-    const inDigree = new Array(numCourses).fill(0);
-
-    for (let i = 0; i < prerequisites.length; i++){
-      const pair = prerequisites[i];
-      adjList[pair[1]].push(pair[0]);
-      inDigree[pair[0]]++;
+var canFinish = function(numCourses, prerequisites) {
+    
+    const map={}
+    const visited={}
+    for(let i=0;i<prerequisites.length;i++){
+        if(!map[prerequisites[i][0]]) map[prerequisites[i][0]]=[]
+        map[prerequisites[i][0]].push(prerequisites[i][1])
     }
-  
-    const stack = [];
 
-    for (let i = 0; i < inDigree.length; i++) {
-       if (inDigree[i] === 0) {
-           stack.push(i);
-       }
-    }
-    if(!stack.length) return false
-    let count = 0;
-
-    while (stack.length) {
-        const current = stack.pop();
-        count++;
-        const adjVetexes = adjList[current];
-
-        for (let i = 0; i < adjVetexes.length; i++) {
-           const next = adjVetexes[i];
-           inDigree[next]--;
-
-           if (inDigree[next] === 0){
-              stack.push(next);
-           }
+    function dfs(node){
+        if(visited[node]) return false
+        if(map[node]!= undefined){
+            if(map[node].length==0){
+                return true
+            }
+            visited[node]=true
+            for(let pre of map[node]){
+                if(!dfs(pre)) return false
+            }
+            visited[node]=false
+            map[node]=[]
         }
+        return true
     }
 
-    return count === numCourses;
+    for(let course in map){
+        if(!dfs(course)) return false
+    }
+    return true
+
 };
