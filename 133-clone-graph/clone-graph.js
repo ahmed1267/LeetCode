@@ -12,19 +12,20 @@
  */
 var cloneGraph = function(node) {
     if(!node) return null
+    let newNode=new Node(node.val)
+    let q=[node]
     let visited =new Map()
-    var dfs= function(node,visited){
-        if(visited.has(node)){
-            return visited.get(node)
+    visited.set(node,newNode)
+    while(q.length){
+        let curr=q.shift()
+        for(let nei of curr.neighbors){
+            if(!visited.has(nei)){
+                let newNei= new Node (nei.val)
+                q.push(nei)
+                visited.set(nei,newNei)
+            }
+            visited.get(curr).neighbors.push(visited.get(nei))
         }
-        let newNode= new Node(node.val)
-        visited.set(node,newNode)
-        for(neighbor of node.neighbors){
-            newNode.neighbors.push(dfs(neighbor,visited))
-        }
-        return newNode
-    }
-    return dfs(node,visited)
-
-    
+    }    
+    return newNode
 };
