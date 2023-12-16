@@ -26,12 +26,9 @@ var isAnagram = function (s, t) {
 
         }
     }
-    map = new Map([...map.entries()].sort((a, b) => b[1] - a[1]))
-
-    if (map.entries().next().value[1] == 0) {
-        return true
-    } else {
-        return false
+    for(let key of map.keys()){
+        if(map.get(key)>0) return false
     }
+    return true
 
 };
