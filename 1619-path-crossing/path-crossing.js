@@ -11,7 +11,6 @@ var isPathCrossing = function(path) {
         if(path[i]=='E') point[1]+=1
         if(path[i]=='W') point[1]-=1
         key=`${point[0]},${point[1]}`
-        console.log(key)
         if(set.has(key) || key== '0,0') return true
         else set.add(key)
     }
