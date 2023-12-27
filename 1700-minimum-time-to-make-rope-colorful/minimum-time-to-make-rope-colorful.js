@@ -6,7 +6,6 @@
 var minCost = function(colors, neededTime) {
     let time=0
     let i=0
-    colors=colors.split('')
     while(i<colors.length){
         if(colors[i]==colors[i-1]){
             if(neededTime[i]<neededTime[i-1]){
