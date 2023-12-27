@@ -5,17 +5,18 @@
  */
 var minCost = function(colors, neededTime) {
     let time=0
-    let i=0
-    while(i<colors.length){
-        if(colors[i]==colors[i-1]){
-            if(neededTime[i]<neededTime[i-1]){
-                time+=neededTime[i]
-                neededTime[i]=neededTime[i-1]
-            }else{
-                time+=neededTime[i-1]
-            }
+    let i=0, j=0
+    while(i<neededTime.length){
+        let currTime=0
+        let currMax=0
+        while(j<neededTime.length && colors[i]==colors[j]){
+            currTime+= neededTime[j]
+            currMax= Math.max(currMax, neededTime[j])
+            j++
         }
-        i++
+        time+= currTime -  currMax
+        i=j
     }
+
     return time
 };
