@@ -13,7 +13,6 @@ var closeStrings = function(word1, word2) {
     }
     arr1=arr1.sort((a,b)=>b-a)
     arr2=arr2.sort((a,b)=>b-a)
-    console.log(arr1,arr2)
     for(let i=0;i<26;i++){
         if(arr1[i]!=arr2[i]) return false
     }
