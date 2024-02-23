@@ -4,24 +4,14 @@
  * @return {number}
  */
 var findJudge = function(n, trust) {
-    if(!trust.length){
-        if(n==1)return 1
-        return -1
-    }
-    let sus= new Map()
-    
+    let truster= new Array(n+1).fill(0)
+    let trustee= new Array(n+1).fill(0)
     for(let e of trust){
-        if(!sus.has(e[1]))sus.set(e[1],[0,0])
-        if(!sus.has(e[0]))sus.set(e[0],[0,0])
-        tr=sus.get(e[1])
-        tr[1]+=1
-        te=sus.get(e[0])
-        te[0]+=1
-        sus.set(e[1],tr)
-        sus.set(e[0],te)
+        truster[e[1]]+=1
+        trustee[e[0]]+=1
     }
-    for(let key of sus.keys()){
-        if(sus.get(key)[0]==0 && sus.get(key)[1]==n-1) return key
+    for(let i=1;i<trustee.length;i++){
+        if(trustee[i]==0 && truster[i]==n-1) return i
     }
     return -1
 };
