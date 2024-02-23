@@ -4,21 +4,14 @@
  * @return {number}
  */
 var findJudge = function(n, trust) {
-    if(!trust.length && n==1) return n
-    else if(!trust.length) return -1
-    let set=new Set([...Array(n).keys()].map(i => i + 1))
-   
-    for(let i=0;i<trust.length;i++){
-        if(set.has(trust[i][0])) set.delete(trust[i][0])
+    let truster= new Array(n+1).fill(0)
+    let trustee= new Array(n+1).fill(0)
+    for(let e of trust){
+        truster[e[1]]+=1
+        trustee[e[0]]+=1
     }
-    let setItr=set.keys()
-    set=new Set([...Array(n).keys()].map(i => i + 1))
-    for(let e of setItr){
-        let c=0
-        for(let i=0;i<trust.length;i++){
-            if(trust[i][1]==e )c+=1
-            if(c==(n-1)) return e
-        }
+    for(let i=1;i<trustee.length;i++){
+        if(trustee[i]==0 && truster[i]==n-1) return i
     }
-     return -1
+    return -1
 };
