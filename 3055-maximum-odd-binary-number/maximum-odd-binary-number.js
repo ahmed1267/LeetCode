@@ -9,13 +9,7 @@ var maximumOddBinaryNumber = function(s) {
         if(s[i]=='0') zeros+=1
         else ones+=1
     }
-    let res=[]
-    for(let i=0;i<ones;i++){
-        res[i]='1'
-    }
-    for(let i=ones-1;i<zeros+ones-1;i++){
-        res[i]='0'
-    }
-    res[zeros+ones-1]='1'
-    return res.join('')
+    let res=""
+    res= res.padStart(ones-1,"1").padEnd(zeros+ones-1,"0").padEnd(zeros+ones,"1")
+   return res
 };
