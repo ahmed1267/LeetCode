@@ -15,11 +15,9 @@ var minimumLength = function(s) {
             r=sR
             break;
         };
-        console.log(s[l],s[r])
         l++
         r--
     }
-    console.log(l,r)
     if(l==r ) return 1
     if(!(l<r)) return 0
     return s.substring(l,r+1).length
