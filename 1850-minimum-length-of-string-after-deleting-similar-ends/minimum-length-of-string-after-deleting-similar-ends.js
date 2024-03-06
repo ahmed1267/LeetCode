@@ -20,5 +20,5 @@ var minimumLength = function(s) {
     }
     if(l==r ) return 1
     if(!(l<r)) return 0
-    return s.substring(l,r+1).length
+    return s.length-l-(s.length-r-1)
 };
