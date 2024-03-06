@@ -8,13 +8,13 @@ var minimumLength = function(s) {
     while(l<r){
         let sL=l
         let sR=r
-        while(s[l]==s[l+1])l++
-        while(s[r]==s[r-1])r--
         if(s[l]!=s[r]){
             l=sL
             r=sR
             break;
         };
+        while(s[l]==s[l+1])l++
+        while(s[r]==s[r-1])r--
         l++
         r--
     }
