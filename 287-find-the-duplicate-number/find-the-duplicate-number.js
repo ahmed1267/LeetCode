@@ -4,12 +4,9 @@
  */
 var findDuplicate = function(nums) {
     
-    let map = new Map()
-    for (let i=0; i<nums.length;i++){
-        if(map.get(nums[i])){
-            return nums[i]
-        }else{
-            map.set(nums[i],1)
-        }
-    }
+   let arr= new Array(nums.length-1).fill(0)
+   for(let i =0;i<nums.length;i++){
+    if(arr[nums[i]-1]!=0) return nums[i]
+    arr[nums[i]-1]+=1
+   }
 };
