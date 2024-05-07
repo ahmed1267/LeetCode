@@ -12,11 +12,6 @@ var isPowerOfTwo = function(n) {
        return divideByTwo(n)
    }
    const number = divideByTwo(n)
-   if (n<=0) {
-        return false
-    } else if(Number.isInteger(number)) {
-        return true
-    }else{
-        return false
-    }
+   if(number>0 && Number.isInteger(number)) return true
+   return false
 };
