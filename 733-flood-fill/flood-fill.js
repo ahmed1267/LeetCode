@@ -29,7 +29,6 @@ var floodFill = function(image, sr, sc, color) {
     // return image
     let rows=[1,0,0,-1]
     let cols=[0,1,-1,0]
-    let originalColor=image[sr][sc]
     let start=image[sr][sc]
     function rec(image,rows,cols,i,j,color){
         if(i<0 ||j<0 ||i>image.length-1 || j>image[0].length-1|| image[i][j]==color|| image[i][j]!=start) return
