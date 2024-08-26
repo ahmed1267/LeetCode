@@ -4,7 +4,6 @@
  */
 var  numIslands= function(grid){
     let count=0
-
     for(let i=0;i<grid.length;i++){
         for(let j=0;j<grid[0].length;j++){
             if(grid[i][j]=='1'){
@@ -19,13 +18,13 @@ var  numIslands= function(grid){
 function bfs(grid,i,j){
     let q=[[i,j]]
     while(q.length){
-        let curr=q.shift()
+        curr=q.shift()
         let currRow=curr[0]
-        let currCol=curr[1]
+        let currCol= curr[1]
         let rows=[1,0,0,-1]
         let cols=[0,1,-1,0]
-        if(currRow<0||currCol<0||currRow>=grid.length||currCol>=grid[0].length) continue;
-        if(grid[currRow][currCol]=='0') continue
+        if(currCol<0 || currCol>grid[0].length-1 || currRow<0 || currRow>grid.length-1 ) continue;
+        if(grid[currRow][currCol]=='0')continue;
         if(grid[currRow][currCol]=='1'){
             grid[currRow][currCol]='0'
         }
