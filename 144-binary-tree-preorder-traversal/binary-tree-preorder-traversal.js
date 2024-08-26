@@ -11,23 +11,22 @@
  * @return {number[]}
  */
 var preorderTraversal = function(root) {
-    let res=[]
-    function dfs(node){
-        if(!node)return
-        res.push(node.val)
-        if(node.left)dfs(node.left)
-        if(node.right)dfs(node.right)
-    }
-    dfs(root)
-    return res
-    // if(!root) return []
-    // let stack=[root]
     // let res=[]
-    // while(stack.length){
-    //     curr=stack.pop()
-    //     res.push(curr.val)
-    //     if(curr.right) stack.push(curr.right)
-    //     if(curr.left) stack.push(curr.left)
+    // function dfs(node){
+    //     if(!node)return
+    //     res.push(node.val)
+    //     if(node.left)dfs(node.left)
+    //     if(node.right)dfs(node.right)
     // }
+    // dfs(root)
     // return res
+    if(!root)return []
+    let stack=[root], res=[]
+    while(stack.length){
+        curr=stack.pop()
+        res.push(curr.val)
+        if(curr.right) stack.push(curr.right)
+        if(curr.left) stack.push(curr.left)
+    }
+    return res
 };
